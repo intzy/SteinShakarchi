@@ -1,0 +1,67 @@
+\ProvidesPackage{Styles}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{subfiles}
+
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+
+\usepackage{xifthen} %if else commands
+\usepackage{mathrsfs} % math script font
+\usepackage{dsfont} % doublestroke font, for mathbb{1} (as mathds{1})
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	PAGE DIMENSIONS (SKINNY LETTERPAPER, 10pt font)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\topmargin=-36pt
+% \textheight=654pt
+\textheight=509pt
+\textwidth=346pt
+\oddsidemargin=-36pt
+\evensidemargin=-36pt
+\marginparwidth=0pt
+\marginparsep=36pt
+\paperwidth=418pt
+% \paperheight=795pt
+\paperheight=650pt
+
+\stockheight=650pt
+\stockwidth=418pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% brackets
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left(#1\right)}
+\newcommand{\sqbr}[1]{\left[#1\right]}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
+\newcommand{\ceil}[1]{\lceil#1\rceil}
+\newcommand{\angl}[1]{\left<\,#1\,\right>}
+\newcommand{\norm}[1]{\left\lvert#1\right\rvert}
+
+\newcommand{\R}{\mathbb{R}}
+
+% Redfeine left and right brackets for better spacing around operators
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+
+\newenvironment{pb}[1][]
+{\par\medskip\noindent\textbf{Problem #1:}\enspace}
+{\medskip}
+
+\newenvironment{exrc}[1][]
+{\par\medskip\noindent\textbf{Exercise #1:}\enspace}
+{\medskip}
+
+\newenvironment{soln}
+{\par\medskip\textit{Solution:}\enspace}
+{}
