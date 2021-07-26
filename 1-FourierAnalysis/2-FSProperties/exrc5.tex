@@ -1,0 +1,49 @@
+%%% Exercise 1.2.5
+\begin{exrc}[5]
+    On the interval \([-\pi, \pi]\) consider the function
+    \begin{equation*}
+        f(\theta) = 
+        \begin{cases}
+            0 & \text{if \(|\theta| > \delta\)},\\
+            1 - |\theta| / \delta & \text{if \(|\theta| \leq \delta\)}.
+        \end{cases}
+    \end{equation*}
+    Thus the graph of \(f\) has the shape of a triangular tent.
+    Show that
+    \begin{equation*}
+        f(\theta) = \frac{\delta}{2\pi} + 2 \sum_{n = 1}^{\infty} \frac{1 - \cos n\delta}{n^2 \pi \delta} \cos n\theta.
+    \end{equation*}
+
+\begin{soln}
+    Since \(f\) is even, 
+    its Fourier series is a cosine series.
+    By the proof of part (a) and (b) of exercise 1,
+    the coefficients of this series are \(\hat{f}(0)\) and
+    \begin{equation*}
+        \hat{f}(n) + \hat{f}(-n) = \frac{1}{\pi} \int_{-\pi}^{\pi} f(\theta) \cos n\theta \ud \theta.
+    \end{equation*}
+    By considering integration of even and odd functions, calculation yields
+    \begin{equation*}
+        \hat{f}(0)
+        = \frac{1}{2\pi} \int_{-\delta}^{\delta} 1 - |\theta| / \delta \ud \theta
+        = \frac{\delta}{\pi} - \frac{1}{\pi \delta} \int_{0}^{\delta} \theta \ud \theta
+        = \frac{\delta}{\pi} - \frac{\delta}{2\pi} = \frac{\delta}{2\pi},
+    \end{equation*}
+    and
+    \begin{align*}
+        \hat{f}(n) + \hat{f}(-n)
+        &= \frac{2}{\pi} \int_{0}^{\delta} (1 - \theta / \delta) \cos n\theta \ud \theta \\
+        &= \frac{2 \sin n\delta}{n \pi} - \frac{2 \delta \sin n\delta}{n\pi \delta}
+        + \frac{2}{n \pi \delta} \int_{0}^{\delta} \sin n\theta \ud \theta \\
+        &= -\frac{2 (\cos n\delta - 1)}{n^2 \pi \delta}\\
+        &= 2 \cdot \frac{1 - \cos n\delta}{n^2 \pi \delta}
+    \end{align*}
+    for \(n \geq 1\).
+    Therefore, the Fourier series of \(f\) is
+    \begin{equation*}
+        f(\theta) \sim \frac{\delta}{2\pi} + 2 \sum_{n = 1}^{\infty}  \frac{1 - \cos n\delta}{n^2 \pi \delta} \cos n\theta.
+    \end{equation*}
+    The fact that \(f\) equals its Fourier series is a consequence of Corollary 2.3.
+
+\end{soln}
+\end{exrc}
