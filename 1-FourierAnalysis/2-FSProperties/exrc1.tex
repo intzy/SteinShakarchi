@@ -1,0 +1,47 @@
+%%% Exercise 1.2.1
+\begin{exrc}[1]
+    Suppose \(f\) is \(2\pi\)-periodic and integrable on any finite interval.
+    Prove that if \(a, b \in \R\), then
+    \begin{equation*}
+        \int_{a}^{b} f(x) \ud x = \int_{a + 2\pi}^{b + 2\pi} f(x) \ud x
+        = \int_{a - 2\pi}^{b - 2\pi} f(x) \ud x.
+    \end{equation*}
+    Also prove that
+    \begin{equation*}
+        \int_{-\pi}^{\pi} f(x + a) \ud x
+        = \int_{-\pi}^{\pi} f(x) \ud x
+        = \int_{\pi + a}^{-\pi + a} f(x) \ud x.
+    \end{equation*}
+
+\begin{soln}
+    For the first set of equalities, since \(f\) is \(2\pi\)-periodic,
+    \begin{equation*}
+        \int_{a}^{b} f(x) \ud x
+        = \int_{a}^{b} f(x + 2\pi) \ud x
+        = \int_{a - 2\pi}^{b - 2\pi} f(u) \ud u,
+    \end{equation*}
+    where \(u = x + 2\pi\).
+    Similarly,
+    \begin{equation*}
+        \int_{a}^{b} f(x) \ud x
+        = \int_{a}^{b} f(x - 2\pi) \ud x
+        = \int_{a + 2\pi}^{b + 2\pi} f(u) \ud u.
+    \end{equation*}
+
+    For the other set of equalities, by \(2\pi\)-periodicity, we see
+    \begin{align*}
+        \int_{-\pi}^{\pi} f(x + a)
+        & = \int_{\pi - a}^{-\pi - a} f(x) \\
+        & = \int_{-\pi - a}^{-\pi} f(x) + \int_{-\pi}^{\pi - a} f(x) \\
+        & = \int_{\pi - a}^{\pi} f(x) + \int_{-\pi}^{\pi - a} f(x) \\
+        & = \int_{-\pi}^{\pi} f(x).
+    \end{align*}
+    The other equality follows by substituting \(a\) for \(-a\) above.
+
+    
+
+
+     
+
+\end{soln}
+\end{exrc}
