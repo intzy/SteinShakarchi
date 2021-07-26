@@ -25,8 +25,9 @@
     \begin{equation*}
         \int_{a}^{b} f(x) \ud x
         = \int_{a}^{b} f(x - 2\pi) \ud x
-        = \int_{a + 2\pi}^{b + 2\pi} f(u) \ud u.
+        = \int_{a + 2\pi}^{b + 2\pi} f(u) \ud u,
     \end{equation*}
+    thus showing the first set of equalities.
 
     For the other set of equalities, by \(2\pi\)-periodicity, we see
     \begin{align*}
@@ -34,8 +35,9 @@
         & = \int_{\pi - a}^{-\pi - a} f(x) \\
         & = \int_{-\pi - a}^{-\pi} f(x) + \int_{-\pi}^{\pi - a} f(x) \\
         & = \int_{\pi - a}^{\pi} f(x) + \int_{-\pi}^{\pi - a} f(x) \\
-        & = \int_{-\pi}^{\pi} f(x).
+        & = \int_{-\pi}^{\pi} f(x),
     \end{align*}
+    where the third equality follows from the first set of equalities proven above.
     The other equality follows by substituting \(a\) for \(-a\) above.
 
     
