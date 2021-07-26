@@ -1,0 +1,34 @@
+%%% Exercise 1.2.10
+\begin{exrc}[10]
+    Suppose \(f\) is a periodic function of period \(2\pi\) which belongs to the class \(C^k\).
+    Show that
+    \begin{equation*}
+        \hat{f}(n) = O(1 / |n|^k) \quad \text{as \(|n| \to \infty\)}.
+    \end{equation*}
+
+\begin{soln}
+    If suffices to prove that
+    \begin{equation*}
+        2\pi\hat{f}(n) = \frac{1}{i^k n^k} \int_{0}^{2\pi} f^{(k)}(\theta)e^{-in\theta} \ud \theta,
+    \end{equation*}
+    for if this holds, then
+    \begin{equation*}
+        2\pi |n^k| |\hat{f}(n)| \leq \int_{0}^{2\pi} |f^{(k)}(\theta)| \ud \theta,
+    \end{equation*}
+    and the expression on the right hand side is constant in \(n\).
+
+    The proof for \(k = 1, 2\) is given in the proof of Corollary 2.4.
+    And if the above expression holds for some \(k\), it also holds for \(k + 1\) since
+    \begin{align*}
+        2\pi \hat{f}(n)
+        &= \frac{1}{i^k n^k} \int_{0}^{2\pi} f^{(k)}(\theta) e^{-in\theta} \ud \theta \\
+        &= \sqbr{- \frac{f^{(k)}(\theta) e^{-in\theta}}{i^{k + 1} n^{k + 1}}}_{0}^{2\pi}
+        + \frac{1}{i^{k + 1} n^{k + 1}} \int_{0}^{2\pi} f^{(k + 1)}(\theta) e^{-in\theta} \ud \theta \\
+        &= \frac{1}{i^{k + 1} n^{k + 1}} \int_{0}^{2\pi} f^{(k + 1)}(\theta) e^{-in\theta} \ud \theta
+    \end{align*}
+    The second equality uses integration by parts,
+    and the third equality follows since the expression in the brackets is \(2\pi\)-periodic.
+
+
+\end{soln}
+\end{exrc}
