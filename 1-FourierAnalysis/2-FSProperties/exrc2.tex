@@ -1,0 +1,98 @@
+%%% Exercise 1.2.2
+\begin{exrc}[2]
+    In this exercise we show how the symmetries of a function imply certain
+    properties of its Fourier coefficients.
+    Let \(f\) be a \(2\pi\)-periodic Riemann integrable function defined on \(\R\).
+    \begin{enumerate}[(a)]
+    \item
+        Show that the Fourier series of the function \(f\) can be written as
+        \begin{equation*}
+            f(\theta) \sim \hat{f}(0) + \sum_{n \geq 1}^{} [ \hat{f}(n) + \hat{f}(-n)]
+            \cos n\theta + i [ \hat{f}(n) - \hat{f}(-n) ] \sin n\theta.
+        \end{equation*}
+    \item
+        Prove that if \(f\) is even, the \(\hat{f}(n) = \hat{f}(-n)\), and we get a cosine series.
+    \item
+        Prove that if \(f\) is odd, then \(\hat{f}(n) = -\hat{f}(-n)\), and we get a sine series.
+    \item
+        Suppose that \(f(\theta + \pi) = f(\theta)\) for all \(\theta \in \R\).
+        Show that \(\hat{f}(n) = 0\) for all odd \(n\).
+    \item
+        Show that \(f\) is real-valued if and only if \(\ol{\hat{f}(n)} = \hat{f}(-n)\) for all \(n\).
+    \end{enumerate}
+
+\begin{soln}
+    \begin{enumerate}[(a)]
+    \item
+        Recall that \(\cos(-x) = \cos(x)\) and \(\sin(-x) = -\sin(x)\).
+        Therefore,
+        \begin{align*}
+            f(\theta)
+            & \sim \hat{f}(0) + \sum_{n \neq 0}^{} \hat{f}(n) e^{in\theta} \\
+            &= \hat{f}(0) + \sum_{n \neq 0}^{} \hat{f}(n) \sqbr{\cos n\theta + i \sin n\theta} \\
+            &= \hat{f}(0) + \sum_{n = 1}^{\infty} \sqbr{\lrb{\hat{f}(n) + \hat{f}(-n)} \cos n\theta
+            + i\lrb{\hat{f}(n) - \hat{f}(-n)} \sin n\theta }.
+        \end{align*}
+    \item
+        Since \(f\) is even and \(\sin n \theta\) is odd for all \(n\),
+        this implies that \(f(\theta) \sin n\theta\) is odd,
+        and so 
+        \begin{equation*}
+            \int_{-\pi}^{\pi} f(\theta) \sin n\theta \ud \theta = 0.
+        \end{equation*}
+        Since \(e^{-in\theta} = \cos n\theta - i \sin n\theta\), this implies
+        \begin{equation*}
+            \hat{f}(n)
+            = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(\theta) \cos n\theta \ud \theta
+            = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(\theta) \cos (-n\theta) \ud \theta
+            = \hat{f}(-n),
+        \end{equation*}
+        as desired.
+        By part (a), we get a cosine series.
+    \item
+        With a method similar to part (b),
+        \begin{equation*}
+            \hat{f}(n) = -\frac{i}{2\pi} \int_{-\pi}^{\pi} f(\theta) \sin n\theta \ud \theta
+            = \frac{i}{2\pi} \int_{-\pi}^{\pi} f(\theta) \sin(-n\theta) \ud \theta
+            = -\hat{f}(-n).
+        \end{equation*}
+        By part (a), we get a sine series.
+    \item
+        For integers \(n\), recall that \(e^{i(2n + 1)\pi} = -1\).
+        Therefore,
+        \begin{align*}
+            \hat{f}(2n + 1) 
+            &= \int_{-\pi}^{\pi} f(\theta) e^{-i(2n + 1)\theta}\\
+            &= \int_{-\pi}^{\pi} f(\theta + \pi) e^{-i(2n + 1)\theta} \\
+            &= \int_{-2\pi}^{0} f(\theta) e^{-i(2n + 1)(\theta - \pi)} \\
+            &= \int_{0}^{2\pi} f(\theta) e^{-i(2n + 1) \theta} \\
+            &= \int_{0}^{2\pi} f(\theta + \pi) e^{-i(2n + 1) \theta} \\
+            &= \int_{-\pi}^{\pi} f(\theta) e^{-i(2n + 1) (\theta - \pi)} \\
+            &= -\int_{-\pi}^{\pi} f(\theta) e^{-i(2n + 1) \theta} \\
+            &= -\hat{f}(2n + 1).
+        \end{align*}
+        This implies \(\hat{f}(2n + 1) = 0\).
+   \item
+       Let \(f(\theta) = x(\theta) + iy(\theta)\), and \(\hat{f}(n) = \hat{x}(n) + i\hat{y}(n)\),
+       where \(x, y, \hat{x}, \hat{y}\) are all real-valued.
+       It is easy to verify that
+       \begin{align*}
+           \hat{x}(n) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} x(\theta) \cos n\theta - y(\theta) \sin n\theta \ud \theta; \\
+           \hat{y}(n) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} x(\theta) \sin n\theta + y(\theta) \cos n\theta \ud \theta.
+       \end{align*}
+       If \(f\) is real-valued, then \(y(\theta) = 0\),
+       so \(\hat{x}(n) = \hat{x}(-n)\) and \(\hat{y}(n) = -\hat{y}(-n)\).
+       Hence
+       \begin{equation*}
+           \ol{\hat{f}(n)} = \hat{x}(n) - i\hat{y}(n) = \hat{x}(-n) + i\hat{y}(-n) = \hat{f}(-n).
+       \end{equation*}
+       Conversely, if \(\ol{\hat{f}(n)} = \hat{f}(-n)\),
+       then we must have \(\hat{x}(n) = \hat{x}(-n)\) and \(\hat{y}(n) = -\hat{y}(-n)\).
+       This is only possible if \(y(\theta) \sin n\theta = 0\) and \(y(\theta) \cos(n\theta) = 0\).
+       That can only be true if \(y(\theta) = 0\) for all \(\theta\).
+        
+    \end{enumerate}
+
+\end{soln}
+\end{exrc}
+
