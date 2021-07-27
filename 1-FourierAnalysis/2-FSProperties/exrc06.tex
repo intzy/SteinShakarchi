@@ -1,0 +1,117 @@
+%%% Exercise 1.2.6
+\begin{exrc}[6]
+    Let \(f\) be the function defined on \([-\pi, \pi]\) by \(f(\theta) = |\theta|\).
+    \begin{enumerate}[(a)]
+    \item
+        Draw the graph of \(f\).
+    \item
+        Calculate the Fourier coefficients of \(f\), and show that
+        \begin{equation*}
+            \hat{f}(n) = 
+            \begin{cases}
+                \frac{\pi}{2} & \text{if \(n = 0\)},\\
+                \frac{-1 + (-1)^n}{\pi n^2} & \text{if \(n \neq 0\)}.
+            \end{cases}
+        \end{equation*}
+    \item
+        What is the Fourier series of \(f\) in terms of sines and cosines?
+    \item
+        Taking \(\theta = 0\), prove that
+        \begin{equation*}
+            \sum_{n \text{ odd } \geq 1}^{} \frac{1}{n^2} = \frac{\pi^2}{8}
+            \quad \text{and} \quad
+            \sum_{n = 1}^{\infty} \frac{1}{n^2}= \frac{\pi^2}{6}.
+        \end{equation*}
+    \end{enumerate}
+
+\begin{soln}
+    \begin{enumerate}[(a)]
+    \item
+        The following is a graph of \(f(\theta)\) extended periodically to \([-2\pi, 2\pi]\).
+
+        \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = left,
+            xlabel = \(x\),
+            ylabel = {\(f(\theta)\)},
+            xmin=-2*pi - 0.5,
+            xmax=2*pi + 0.5,
+            xtick={-2*pi, -(3/2)*pi, -pi, -(1/2)*pi, 0, (1/2)*pi, pi, (3/2)*pi, 2*pi},
+            xticklabels={$-2\pi$,,$-\pi$,,0,,$\pi$,,$2\pi$},
+            ymax = pi + 0.25,
+            ytick={0, pi},
+            yticklabels={0,$\pi$},
+        ]
+        \addplot [
+            domain=-pi:pi,
+            samples=101, 
+        ]
+        {abs(x)};
+        \addlegendentry{\(f(\theta)\)}
+        \addplot [
+            domain=-2 * pi:-pi,
+            samples=100, 
+        ]
+        {x + 2 * pi};
+        \addplot [
+            domain=pi:2*pi,
+            samples=100, 
+        ]
+        {-x + 2 * pi};
+
+        \end{axis}
+        \end{tikzpicture}
+
+    \item
+        Note that \(f\) is an even function,
+        so by exercise 2, \(\hat{f}(n) = \frac{1}{\pi}\int_{0}^{\pi} f(0) \cos n\theta  \ud \theta\).
+        Calculation yields
+        \begin{equation*}
+            \hat{f}(0) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(\theta) \ud \theta
+            = \frac{1}{\pi} \int_{0}^{\pi} \theta \ud \theta
+            = \frac{1}{\pi} \frac{\pi^2}{2}
+            = \frac{\pi}{2}.
+        \end{equation*}
+        and
+        \begin{equation*}
+            \hat{f}(n)
+            = \frac{1}{\pi} \int_{0}^{\pi} \theta \cos n\theta \ud \theta
+            = \frac{\pi \sin n\pi}{\pi n} - \frac{1}{n\pi} \int_{0}^{\pi} \sin n\theta \ud \theta
+            = 0 + \frac{{(-1)}^n - 1}{\pi n^2}
+        \end{equation*}
+        for \(n \neq 0\).
+    \item
+        Since \(f\) is even, by exercise 2, the Fourier series of \(f\) is a cosine series with
+        \begin{equation*}
+            f(\theta) \sim \hat{f}(0) + \sum_{n = 1}^{\infty} (\hat{f}(n) + \hat{f}(-n)) \cos n\theta
+            = \frac{\pi}{2} + 2\sum_{n = 1}^{\infty} \frac{-1 - {(-1)}^n}{\pi n^2} \cos n\theta.
+        \end{equation*}
+        Note that the Fourier series of \(f\) converges to \(f\) since \(\hat{f}(n) = O(1 / n^2)\),
+        so equality holds above.
+        Also, note that the Fourier coefficients are zero whenever \(n\) is nonzero even, so
+        \begin{equation*}
+            f(\theta) = \frac{\pi}{2} + \sum_{n \text{ odd } \geq 1}^{} \frac{4}{\pi n^2} \cos n\theta.
+        \end{equation*}
+    \item
+        By part (c),
+        \begin{equation*}
+            0 = f(0) = \frac{\pi}{2} + \frac{4}{\pi}\sum_{n \text{ odd } \geq 1}^{} \frac{1}{n^2}
+        \end{equation*}
+        Solving for the summation yields \(\sum_{n \text{ odd } \geq 1}^{} 1 / n^2 = \pi^2 / 8\).
+
+        Next, note that
+        \begin{equation*}
+            \sum_{n = 1}^{\infty} \frac{1}{n^2} 
+            = \sum_{n \text{ odd } \geq 1}^{} \frac{1}{n^2} + \sum_{n \text{ even } \geq 1}^{} \frac{1}{n^2}
+            = \sum_{n = 1}^{\infty} \frac{1}{(2n - 1)^2} + \frac{1}{4} \sum_{n = 1}^{\infty} \frac{1}{n^2}.
+        \end{equation*}
+        Therefore,
+        \begin{equation*}
+            \frac{3}{4} \sum_{n = 1}^{\infty} \frac{1}{n^2} = \sum_{n \text{ odd } \geq 1}^{} \frac{1}{n^2}
+            = \frac{\pi^2}{8}.
+        \end{equation*}
+        Hence \(\sum_{}^{} 1 / n^2 = \pi^2 / 6\).
+    \end{enumerate}
+
+\end{soln}
+\end{exrc}
