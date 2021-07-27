@@ -1,0 +1,43 @@
+%%% Exercise 1.2.12
+\begin{exrc}[12]
+    Prove that if a series of complex numbers \(\sum_{}^{} c_n\) converges to \(s\),
+    then \(\sum_{}^{} c_n\) is Cesàro summable to \(s\).
+
+\begin{soln}
+    First suppose that \(s = 0\).
+    We want to prove that Cesàro means \(\sigma_N\) also converge to 0.
+    Let \(s_n\) be the \(n\)'th partial sum of \(\sum_{}^{} c_n\).
+    Let \(\epsilon > 0\) and
+    choose \(m\) large enough that \(|s_n| < \epsilon\) for all \(n \geq m\).
+    Then for large \(n\),
+    \begin{equation*}
+        |\sigma_n| 
+        \leq \abs{\frac{s_0 + s_1 + \cdots + s_{m - 1}}{N}} + 
+        \abs{\frac{s_m + s_{m + 1} + \cdots + s_N}{N}}.
+    \end{equation*}
+    The first term clearly goes to zero as \(N \to \infty\) (since \(m\) is fixed),
+    and the second term is bounded by \(N \epsilon / N = \epsilon\).
+    Thus \(|\sigma_n| \to 0\).
+
+    In general, define the new series \(\sum_{}^{} d_n\),
+    where \(d_0 = c_0 - s\) and \(d_n = c_{n}\) otherwise.
+    Let \(s'_N\) and \(\sigma'_N\) be the \(N\)'th partial sums and \(N\)'th Cesàro means 
+    of the series \(\sum_{}^{} d_n\) respectively.
+    Then \(s_n' \sum_{n = 1}^{N} d_n \to 0\), so by the previous paragraph,
+    its Cesàro means \(\sigma_N'\) also go to 0.
+    So
+    \begin{align*}
+        \sigma_N - s
+        &= \frac{s_0 + s_1 + \ldots + s_{N - 1}}{N} - s \\
+        &= \frac{-Ns + s_0 + s_1 + \ldots + s_{N - 1}}{N} \\
+        &= \frac{s_0' + s_1' + \ldots + s_{N - 1}'}{N} \\
+        &= \sigma_N' \\
+        & \to 0.
+    \end{align*}
+    Hence \(\sigma_N \to s\), as desired.
+
+
+
+    
+\end{soln}
+\end{exrc}
