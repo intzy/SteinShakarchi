@@ -1,0 +1,61 @@
+%%% Exercise 1.2.18
+\begin{exrc}[18]
+    If \(P_r(\theta)\) denotes the Poisson kernel, show that the function
+    \begin{equation*}
+        u(r, \theta) = \frac{\partial P_r}{\partial \theta},
+    \end{equation*}
+    defined for \(0 \leq r < 1\) and \(\theta \in \R\), satisfies:
+    \begin{enumerate}[(i)]
+    \item
+        \(\bigtriangleup u = 0\) in the disc.
+    \item
+        \(\lim_{r \to 1} u(r, \theta) = 0\) for each \(\theta\).
+    \end{enumerate}
+    However, \(u\) is not identically zero.
+
+\begin{soln}
+    Recall that \(P_r = \sum_{n = -\infty}^{\infty} r^{|n|} e^{in\theta}\). 
+    Differentiating each term with respect to \(\theta\) gives
+    \begin{equation*}
+        \sum_{n = -\infty}^{\infty} in r^{|n|} e^{in\theta}
+        = \sum_{n = 1}^{\infty} inr^n (e^{in\theta} - e^{-in\theta})
+        = \sum_{n = 1}^{\infty} -2nr^n \sin n\theta.
+    \end{equation*}
+    Since this sum converges uniformly in \(\theta\) on any closed disc
+    contained in the unit disc,
+    the above sum is in fact the partial derivative of the Poisson kernel, i.e.,
+    \begin{equation*}
+        u(r, \theta) = \sum_{n = 1}^{\infty} -2nr^n \sin n\theta.
+    \end{equation*}
+    Like the proof of part (i) of Theorem 5.7, by considering any \(\rho < 1\),
+    the series for \(u\) can be differentiated twice term by term (in either variable)
+    and the differentiated series is uniformly convergent in the disc of radius \(\rho\).
+    Therefore, \(u\) can be twice differentiated with respect to both \(r\) and \(\theta\)
+    by differentiating the series term by term.
+    Treating the case \(n = 1\) and \(n > 1\) separately and using polar coordinates, 
+    it is easy to show the Laplacian \(\bigtriangleup\) of each term in the series is 0,
+    hence \(\bigtriangleup u = 0\).  This shows point (i).
+
+    Point (ii) in the special case that \(\theta = 0\) is obvious by considering the 
+    series expression of \(u\).
+    Otherwise, suppose \(\theta \neq 0\).
+    By considering the closed form of \(P_r\), we obtain
+    \begin{equation*}
+        u(r, \theta) = \frac{\partial}{\partial \theta} \frac{1 - r^2}{1 - 2r \cos \theta + r^2}
+        = \frac{2r (r^2 - 1) \sin x}{(r^2 - 2r \cos x + 1)^2}.
+    \end{equation*}
+    Taking \(r \to 1\) gives a zero numerator and nonzero denominator,
+    hence 
+    \begin{equation*}
+        \lim_{r \to 1} u(r, \theta) = 0,
+    \end{equation*}
+    which completes the proof of point (ii).
+
+    However, \(u\) is not identically zero.
+    For example, by using the closed form of \(u\), we see
+    \begin{equation*}
+        u(1 / 2, \theta) = -\frac{3 \sin \theta}{(5 / 4 - 2 \cos \theta)^2}.
+    \end{equation*}
+
+\end{soln}
+\end{exrc}
