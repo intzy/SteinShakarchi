@@ -1,0 +1,107 @@
+%%% Exercise 1.3.15
+\begin{exrc}[15]
+    Let \(f\) be \(2\pi\)-periodic and Riemann integrable on \([-\pi, \pi]\).
+    \begin{enumerate}[(a)]
+    \item
+        Show that
+        \begin{equation*}
+            \hat{f}(n) = -\frac{1}{2\pi} \int_{-\pi}^{\pi} f(x + \pi / n) e^{-inx} \ud x
+        \end{equation*}
+        hence
+        \begin{equation*}
+            \hat{f}(n) = \frac{1}{4\pi} \int_{-\pi}^{\pi} [f(c) - f(x + \pi / n)]e^{-inx} \ud x.
+        \end{equation*}
+
+    \item
+        Now assume that \(f\) satisfies a Hölder condition of order \(\alpha\), namely
+        \begin{equation*}
+            |f(x + h) - f(x)| \leq C |h|^{\alpha}
+        \end{equation*}
+        for some \(0 < \alpha < 1\), some \(C > 0\), and all \(x, h\).
+        Use part (a) to show that
+        \begin{equation*}
+            \hat{f}(n) = O(1 / |n|^\alpha).
+        \end{equation*}
+
+    \item
+        Prove that the above result cannot be improved by showing that the function
+        \begin{equation*}
+            f(x) = \sum_{k = 0}^{\infty} 2^{-k\alpha} e^{i 2^k x},
+        \end{equation*}
+        where \(0 < \alpha < 1\), satisfies
+        \begin{equation*}
+            |f(x + h) - f(x)| \leq C |h|^\alpha,
+        \end{equation*}
+        and \(\hat{f}(N) = 1 / N^\alpha\) whenever \(N = 2^k\).
+    \end{enumerate}
+
+\begin{soln}
+    \begin{enumerate}[(a)]
+    \item
+        We see
+        \begin{align*}
+            2\pi \hat{f}(n)
+            &= \int_{-\pi}^{\pi} f(x) e^{-inx} \ud x \\
+            &= \int_{-\pi - \pi / n}^{\pi - \pi / n} f(x + \pi / n) e^{-in(x + \pi / n)} \ud x \\
+            &= \int_{-\pi - \pi / n}^{\pi - \pi / n} f(x + \pi / n) e^{-inx} e^{-i\pi} \ud x \\
+            &= - \int_{-\pi - \pi / n}^{\pi - \pi / n} f(x + \pi / n) e^{-inx} \ud x \\
+            &= -\int_{-\pi}^{\pi} f(x + \pi / n) e^{-inx} \ud x,
+        \end{align*}
+        where the last equality follows from Exercise 1.2.1.
+        Therefore, using the two expressions we have for \(\hat{f}(n)\),
+        \begin{align*}
+            \hat{f}(n)
+            &= \frac{\hat{f}(n) + \hat{f}(n)}{2} \\
+            &= \frac{1}{4\pi} \int_{-\pi}^{\pi} f(x) e^{-inx} \ud x
+            + \frac{1}{4\pi} \int_{-\pi}^{\pi} f(x + \pi / n) e^{-inx} \ud x \\
+            &= \frac{1}{4\pi} \int_{-\pi}^{\pi} [f(x) + f(x + \pi / n)] e^{-inx} \ud x.
+        \end{align*}
+
+    \item
+        Since \(f\) satisfies Hölder continuity, by letting \(n = \pi / h\), we see
+        \begin{align*}
+            |\hat{f}(n)|
+            & \leq \frac{1}{4\pi} \int_{-\pi}^{\pi} |f(x) - f(x + \pi / n)| \ud x \\
+            & \leq \frac{1}{4\pi} \int_{-\pi}^{\pi} C |\pi / n|^\alpha \ud x \\
+            &= \frac{|\pi|^\alpha}{2} C \abs{\frac{1}{n^\alpha}} \\
+            &= O(1 / |n|^\alpha)
+        \end{align*}
+        
+    \item
+        First we show that \(f\) satisfies Hölder continuity.
+        We note that
+        \begin{align*}
+            |f(x + h) - f(x)|
+            &\leq \sum_{k = 0}^{\infty} \abs{2^{-k\alpha} \lrb{e^{i 2^k (x + h)} - e^{i 2^k x}}} \\
+            &\leq \sum_{k = 0}^{\infty} \abs{2^{-k\alpha} e^{i 2^k x} \lrb{e^{i 2^k h} - 1}} \\
+            &= \sum_{2^k \leq 1 / |h|}^{} 2^{-k \alpha} 2^k |h|
+            + 2\sum_{2^k > 1 / |h|}^{} 2^{-k \alpha}
+        \end{align*}
+        Let \(l\) be the unique natural number that satisfies \(2^l \leq 1 / |h| < 2^{l + 1}\).
+        The first sum is bounded by
+        \begin{equation*}
+            \sum_{k = 0}^{l} 2^{k(1 - \alpha)} |h|
+            = |h|^\alpha \sum_{k = 0}^{l} (2^{k} |h|)^{1 - \alpha}
+            \leq |h|^\alpha \sum_{k = 0}^{l} (2^{1 - \alpha})^{k - l}
+            < \frac{1}{1 - 2^{1 - \alpha}} |h|^\alpha,
+        \end{equation*}
+        and the second sum is bounded by 
+        \begin{equation*}
+            2\sum_{k = l + 1}^{\infty} 2^{-k \alpha}
+            = 2 \sum_{k = 0}^{\infty} 2^{-(k + l + 1)\alpha}
+            = 2 \cdot 2^{-(l + 1)\alpha} \cdot \sum_{k = 0}^{\infty} 2^{-k\alpha}
+            < \frac{2}{1 - 2^{-\alpha}} |h|^\alpha.
+        \end{equation*}
+        Therefore, \(f\) is Hölder continuous of order \(\alpha\).
+
+        Finally, since the sum defining \(f\) converges absolutely, hence uniformly,
+        and since the family \(\set{e_n}\) is orthonormal,
+        if \(N\) is a power of 2, then
+        \(\hat{f}(N) = 1 / N^{\alpha}\).
+        This shows that the asymptotic bound in part (b) can not be improved.
+
+
+    \end{enumerate}
+
+\end{soln}
+\end{exrc}
