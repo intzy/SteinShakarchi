@@ -1,0 +1,168 @@
+%%% Problem 1.3.4
+\begin{pb}[4]
+    In this problem, we find the formula for the sum of the series
+    \begin{equation*}
+        \sum_{n = 1}^{\infty} \frac{1}{n^k}
+    \end{equation*}
+    where \(k\) is any even integer.
+    These sums are expressed in terms of the Bernoulli numbers.
+
+    Define the \emph{Bernoulli numbers} \(B_n\) by the formula
+    \begin{equation*}
+        \frac{z}{e^z - 1} = \sum_{n = 0}^{\infty} \frac{B_n}{n!} z^n.
+    \end{equation*}
+    \begin{enumerate}[(a)]
+    \item
+        Show that \(B_0 = 1\), \(B_1 = - 1 / 2\), \(B_2 = -1 / 6\),
+        \(B_3 = 0\), \(B_4 = -1 / 30\), and \(B_5 = 0\).
+    
+    \item
+        Show that for \(n \geq 1\) we have
+        \begin{equation*}
+            B_n = - \frac{1}{n + 1} \sum_{k = 0}^{n - 1}  \binom{n + 1}{k} B_k.
+        \end{equation*}
+    
+    \item
+        By writing
+        \begin{equation*}
+            \frac{z}{e^z - 1} = 1 - \frac{z}{2} + \sum_{n = 2}^{\infty} \frac{B_n}{n!}z^n,
+        \end{equation*}
+        shoe that \(B_n = 0\) if \(n\) is odd and \(> 1\).
+        Also prove that
+        \begin{equation*}
+            z \cot z = 1 + \sum_{n = 1}^{\infty} (-1)^n \frac{2^{2n} B_{2n}}{(2n)!} z^{2n}.
+        \end{equation*}
+    
+    \item
+        The \emph{zeta function} is defined by
+        \begin{equation*}
+            \zeta(s) = \sum_{n = 1}^{\infty}  \frac{1}{n^s}, \quad \quad \text{for all \(s > 1\)}.
+        \end{equation*}
+        Deduce from the result in (c), and the expression for the cotangent function
+        obtained in the problem, that
+        \begin{equation*}
+            x \cot x = 1 - 2 \sum_{m = 1}^{\infty} \frac{\zeta(2m)}{\pi^{2m}x^{2m}}.
+        \end{equation*}
+    
+    \item
+        Conclude that
+        \begin{equation*}
+            2 \zeta(2m) = (-1)^{m + 1} \frac{(2\pi)^{2m}}{(2m)!}B_{2m}.
+        \end{equation*}
+    \end{enumerate}
+
+\begin{soln}
+    \begin{enumerate}[(a)]
+    \item
+        Recall that \(e^z - 1 = \sum_{n = 1}^{\infty} z^n / n!\).
+        Therefore,
+        \begin{equation*}
+            1 = \sum_{n = 0}^{\infty} \frac{1}{(n+1)!} z^n \sum_{n = 0}^{\infty} \frac{B_n}{n!} z^n.
+        \end{equation*}
+        Collecting like terms gives
+        \begin{align*}
+            1 &= \frac{1}{1!} \frac{B_0}{0!}, \\
+            0 &= \frac{1}{2!} \frac{B_0}{0!} + \frac{1}{1!} \frac{B_1}{1!}, \\
+            0 &= \frac{1}{3!} \frac{B_0}{0!} + \frac{1}{2!} \frac{B_1}{1!} + \frac{1}{1!} \frac{B_2}{2!}, \\
+            0 &= \frac{1}{4!} \frac{B_0}{0!} + \frac{1}{3!} \frac{B_1}{1!}
+                    + \frac{1}{2!} \frac{B_2}{2!} + \frac{1}{1!} \frac{B_3}{3!}, \\ 
+            0 &= \frac{1}{5!} \frac{B_0}{0!} + \frac{1}{4!} \frac{B_1}{1!}
+                    + \frac{1}{3!} \frac{B_2}{2!} + \frac{1}{2!} \frac{B_3}{3!}
+                    + \frac{1}{1!} \frac{B_4}{4!}, \\
+            0 &= \frac{1}{6!} \frac{B_0}{0!} + \frac{1}{5!} \frac{B_1}{1!}
+                    + \frac{1}{4!} \frac{B_2}{2!} + \frac{1}{3!} \frac{B_3}{3!}
+                    + \frac{1}{2!} \frac{B_4}{4!} + \frac{1}{1!} \frac{B_5}{5!}.
+        \end{align*}
+        Solving successively for \(B_0\) to \(B_5\) gives the desired result.
+
+    \item
+        From part (a), we showed that
+        \begin{equation*}
+            1 = \sum_{k = 0}^{\infty} \frac{z^k}{(k + 1)!} 
+            \cdot \sum_{k = 0}^{\infty} \frac{B_k z^k}{k!}.
+        \end{equation*}
+        The infinite polynomial on the right-hand side of the above equation
+        has zeros for all non-constant coefficients.
+        Therefore, as we did in part (a),
+        by collecting terms of the same degree in the above expression, we see
+        \begin{equation*}
+            0 = \sum_{k = 0}^{n} \frac{z^{n - k}}{(n - k + 1)!} \cdot \frac{B_k z^k}{k!}
+        \end{equation*}
+        for \(n \geq 0\).
+        Solving for \(B_n\) above and factoring out \(z^n\) gives
+        \begin{equation*}
+            B_n = -n! \sum_{k = 0}^{n - 1} \frac{B_k}{(n - k + 1)! k!}.
+        \end{equation*}
+        Multiplying the terms in the sum by \((n + 1)\) shows
+        \begin{equation*}
+            B_n = -\frac{1}{n + 1} \sum_{k = 0}^{n - 1} \frac{(n + 1)! B_k}{(n - k + 1)! k !}
+            = -\frac{1}{n + 1} \sum_{k = 0}^{n - 1} \binom{n + 1}{k} B_k.
+        \end{equation*}
+    
+    \item
+        Define
+        \begin{equation*}
+            f(z) = 1 + \sum_{k = 2}^{\infty} \frac{B_n}{n!} z_n.
+        \end{equation*}
+        Note that
+        \begin{equation*}
+            f(z) = \frac{z}{e^z - 1} + \frac{z}{2} = \frac{2z + ze^z - z}{2e^z - 2}
+            = \frac{z}{2} \frac{e^z + 1}{e^z - 1}.
+            = \frac{z}{2} \frac{e^{z / 2} + e^{- z / 2}}{e^{z / 2} - e^{-z / 2}}.
+        \end{equation*}
+        By the above equation, we see that \(f(z) = f(-z)\).
+        Therefore, for each \(n \geq 2\), we must have \(B_n (-z)^n / n! = B_n z^n / n!\).
+        So, if \(B_n\) is nonzero, then \((-1)^n z^n = z^n\),
+        and this clearly holds only when \(n\) is even.
+        Therefore, for odd \(n \geq 2\), we must have \(B_n = 0\).
+
+        Next, by considering \(f(2iz)\), on one hand, we obtain
+        \begin{equation*}
+            f(2iz) = zi \frac{e^{iz} + e^{-iz}}{e^{iz} - e^{-iz}} = z \cot z.
+        \end{equation*}
+        On the other hand, by using the fact that \(B_n = 0\) for odd \(n \geq 2\), we see
+        \begin{equation*}
+            f(2iz) 
+            = 1 + \sum_{k = 1}^{\infty} \frac{B_{2n}}{(2n)!} (2iz)^{2n}
+            = 1 + \sum_{k = 1}^{\infty} (-1)^n \frac{2^{2n} B_{2n}}{(2n)!} z^{2n}.
+        \end{equation*}
+        Therefore,
+        \begin{equation*}
+            z \cot z = 1 + \sum_{k = 1}^{\infty} (-1)^n \frac{2^{2n} B_{2n}}{(2n)!} z^{2n}.
+        \end{equation*}
+    
+    \item
+        From the previous problem, we deduced that
+        \begin{equation*}
+            x \cot x = 1 + 2 \sum_{n = 1}^{\infty} \frac{x^2}{x^2 - n^2 \pi^2}.
+        \end{equation*}
+        Recall that \(1 / (1 - r) = \sum_{k}^{} r^k\) for \(|r| < 1\).
+        Therefore, for \(|x| < \pi\),
+        \begin{align*}
+            x \cot x
+            &= 1 + \frac{2x^2}{\pi^2} \sum_{n = 1}^{\infty} \frac{1}{n^2} \frac{1}{\frac{x^2}{n^2 \pi^2} - 1} \\
+            &= 1 - \frac{2x^2}{\pi^2} \sum_{n = 1}^{\infty} \frac{1}{n^2} \sum_{m = 0}^{\infty} \lrb{\frac{x}{n\pi}}^{2m} \\
+            &= 1 - 2 \sum_{n = 1}^{\infty} \sum_{m = 1}^{\infty} \frac{x^{2m}}{n^{2m}\pi^{2m}}.
+        \end{align*}
+        For any \(n \geq 1\), and \(|x| < \pi\), the sum
+        \(\sum_{m = 1}^{\infty} \frac{x^{2m}}{n^{2m} \pi^{2m}}\) converges absolutely.
+        So by the Weierstrass \(M\)-test,
+        we can interchange the order of the infinite sums.
+        Therefore
+        \begin{equation*}
+            x \cot x = 1 - 2 \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \frac{x^{2m}}{n^{2m}\pi^{2m}}
+            = \sum_{m = 1}^{\infty} \frac{\zeta(2m)}{\pi^{2m}}x^{2m}.
+        \end{equation*}
+    
+    \item
+        From parts (c) and (d), we can conclude that for integers \(m \geq 1\), we have
+        \begin{equation*}
+            -\frac{2 \zeta(2m)}{\pi^{2m}} = (-1)^m \frac{2^{2m} B_{2m}}{(2m)!}.
+        \end{equation*}
+        Rearranging for \(2 \zeta(2m)\) gives the desired result.
+        This gives a formula for \(\sum_{n = 1}^{\infty} 1 / n^k\) for any positive even \(k\).
+        
+    \end{enumerate}
+
+\end{soln}
+\end{pb}
