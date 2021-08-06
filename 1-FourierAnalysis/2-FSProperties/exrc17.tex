@@ -1,0 +1,77 @@
+%%% Exercise 1.2.17
+\begin{exrc}[17]
+    An integrable function is said to have a \emph{jump discontinuity} at \(\theta\)
+    if the two limits
+    \begin{equation*}
+        \lim_{h \to 0} f(\theta + h) = f(\theta^+) \quad \text{and} \quad
+        \lim_{h \to 0} f(\theta - h) = f(\theta^-) \quad h > 0
+    \end{equation*}
+    exist.
+
+    \begin{enumerate}[(a)]
+    \item
+        Prove that if \(f\) has a jump discontinuity at \(\theta\), then
+        \begin{equation*}
+            \lim_{r \to 1} A_r(f)(\theta) = \frac{f(\theta^+) + f(\theta^-)}{2},
+            \quad \text{with \(0 \leq r < 1\)}.
+        \end{equation*}
+    
+    \item
+        Show that if \(f\) has a jump discontinuity at \(\theta\),
+        the Fourier series of \(f\) at \(\theta\) is Cesàro summable
+        to \(\frac{f(\theta^+) + f(\theta^-)}{2}\).
+        
+    \end{enumerate}
+
+\begin{soln}
+    Let \(K_n\) be a good kernel such that
+    \begin{equation*}
+        \frac{1}{2\pi} \int_{0}^{\pi} K_n(x) \ud x
+        = \frac{1}{2\pi} \int_{-\pi}^{0} K_n(x) \ud x
+        = \frac{1}{2}.
+    \end{equation*}
+    Suppose \(f\) is integrable on the circle
+    and has a jump continuity at \(x \).
+    Then
+    \begin{equation*}
+        \frac{1}{2\pi} \int_{0}^{\pi} K_n(x) f(x - y) \ud y - \frac{1}{2} f(x^-)
+        = \frac{1}{2\pi} \int_{0}^{\pi} K_n(x) [f(x - y) - f(x^-)] \ud x.
+    \end{equation*}
+    Using the above with almost the exact proof as Theorem 4.1, it can be shown that
+    \begin{equation*}
+        \abs{\frac{1}{2\pi} \int_{0}^{\pi} K_n(x) f(x - y) \ud y - \frac{1}{2}f(x^-)}
+        \to 0
+    \end{equation*}
+    as \(n \to \infty\).
+    Similarly,
+    \begin{equation*}
+        \abs{\frac{1}{2\pi} \int_{-\pi}^{0} K_n(x) f(x - y) \ud y - \frac{1}{2}f(x^+)}
+        \to 0
+    \end{equation*}
+    as \(n\) becomes large.
+    Adding the above two equations shows
+    \begin{equation*}
+        \abs{(f * K_n)(x) - \frac{f(x^+) - f(x^-)}{2}} \to 0
+    \end{equation*}
+    as \(n \to \infty\).
+
+    \begin{enumerate}[(a)]
+    \item
+        Since \(P_r\) is even and a good kernel,
+        by our remarks above and the fact that \(A_r(f)(\theta) = (f * P_r)(\theta)\),
+        the limit
+        \begin{equation*}
+            \lim_{r \to 1} A_r(f)(\theta) = \frac{f(\theta^+) - f(\theta^-)}{2}
+        \end{equation*}
+        holds.
+    
+    \item
+        Similarly, since the Fejér kernel is even and a good kernel,
+        by our remarks above and the fact that \(\sigma_N(f)(\theta) = (f * F_N)(x)\),
+        the Fourier series of \(f\) at \(\theta\) is Cesàro summable to \(\frac{f(\theta^+)
+        + f(\theta^-)}{2}\).
+
+    \end{enumerate}
+
+\end{soln}
+\end{exrc}
