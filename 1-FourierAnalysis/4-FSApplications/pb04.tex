@@ -1,0 +1,70 @@
+%%% Problem 1.4.4
+\begin{pb}[4]
+    An elementrary construction of a continuous but nowhere differentiable function
+    is obtained by ``piling up singularities'', as follows.
+
+    On \([-1, 1]\), consider the function
+    \begin{equation*}
+        \varphi(x) = |x|
+    \end{equation*}
+    and extend \(\varphi\) to \(\R\) by requiring it to be periodic of period 2.
+    Clearly, \(\varphi\) is continuous on \(\R\) and \(|\varphi(x)| \leq 1\) for all \(x\)
+    so the function \(f\) defined by
+    \begin{equation*}
+        f(x) = \sum_{n = 0}^{\infty} \lrb{\frac{3}{4}}^n \varphi(4^nx)
+    \end{equation*}
+    is continuous on \(\R\).
+    
+    \begin{enumerate}[(a)]
+    \item
+        Fix \(x_0 \in \R\).
+        For every positive integer \(m\), let \(\delta_m = \pm \frac{1}{2} 4^{-m}\)
+        where the sign is chosen so that no integer lies in between \(4^m x_0\) and \(4^m(x_0 + \delta_m)\).
+        Consider the quotient
+        \begin{equation*}
+            \gamma_n = \frac{\varphi(4^n(x_0 + \delta_m) - \varphi(4^n x_0)}{\delta_m}.
+        \end{equation*}
+        Prove that if \(n > m\), then \(\gamma_m = 0\),
+        and for \(0 \leq n \leq m\), one has \(|\gamma_m| \leq 4^n\) with \(|\gamma_m| = 4^m\).
+    
+    \item
+        From the above observations prove the estimate
+        \begin{equation*}
+            \abs{\frac{f(x_0 + \delta_m) - f(x_0)}{\delta_m}} \geq \frac{1}{2} (3^m + 1),
+        \end{equation*}
+        and conclude that \(f\) is not differentiable at \(x_0\).
+
+    \end{enumerate}
+
+\begin{soln}
+    \begin{enumerate}[(a)]
+    \item
+        If \(n > m\), then \(4^n \delta_m\) is an even integer,
+        hence \(4^n(x_0 + \delta_m)\) and \(4^n x_0\) differ
+        by an even integer.
+        Since \(\varphi\) has period 2, this implies that \(\gamma_n = 0\).
+
+        If \(0 \leq m \leq n\), then we get the 
+        \begin{equation*}
+            \abs{\varphi(4^n(x_0 + \delta_m)) - \varphi(4^n x_0)} \leq 4^n \delta_m,
+        \end{equation*}
+        and equality holds when \(n = m\).
+        Therefore, \(|\gamma_n| \leq 4^n\), and equality holds when \(n = m\).
+    
+    \item
+        Using part (a), we can conclude
+        \begin{equation*}
+            \abs{\frac{f(x_0 + \delta_m) - f(x_0)}{\delta_m}}
+            = \abs{\sum_{n = 0}^{m} (3/4)^n \gamma_n}
+            \geq |3^n| - \sum_{n = 0}^{m - 1} 3^n
+            = \frac{1}{2}(3^m + 1).
+        \end{equation*}
+        Taking \(m \to \infty\) shows
+        \(\limsup_{|h| \to 0} \frac{f(x_0 + h) - f(x_0)}{h} = \infty\),
+        hence \(f\) is not differentiable at \(x_0\).
+        
+
+    \end{enumerate} 
+
+\end{soln}
+\end{pb}
