@@ -16,6 +16,9 @@ The purpose of this repository is to give solutions to select exercises and prob
 textbook series to aid students who are learning the material by self-studying these books.
 The following are my solutions to some of the exercises and problems in
 Stein's and Shakarchi's Princeton Lectures in Analysis.
+To get the pdf's, you can either compile the LaTeX project on your local machine,
+compile the LaTeX on a online compiler such as [Overleaf](https://www.overleaf.com/),
+or view the pdf's on [MEGA](https://mega.nz/folder/AR4DjQxR#C40J3tYHkjjFqwndM2d6Vw).
 
 Note: it is likely that some of my solutions are not fully correct or complete.
 Use at your own risk.
