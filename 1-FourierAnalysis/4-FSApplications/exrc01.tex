@@ -1,0 +1,74 @@
+%%% Exercise 1.4.1
+\begin{exrc}[1]
+    Let \(\gamma: [a, b] \to \R^2\) be a parameterization for the closed curve \(\Gamma\).
+    \begin{enumerate}[(a)]
+    \item
+        Prove that \(\gamma\) is a parameterization by arc-length if and only if the length
+        of the curve from \(\gamma(a)\) to \(\gamma(s(\) is precisely \(s - a\), that is,
+        \begin{equation*}
+            \int_{a}^{s} |\gamma'(t)| \ud t = s - a.
+        \end{equation*}
+
+    \item
+        Prove that any curve \(\Gamma\) admits a parameterization by arc-length.
+    \end{enumerate}
+
+\begin{soln}
+    \begin{enumerate}[(a)]
+    \item
+        If \(\gamma\) is a parameterization by arc-length,
+        then \(\gamma'(t) = 1\) everywhere,
+        hence
+        \begin{equation*}
+            \int_{a}^{s} |\gamma'| \ud t
+            = \int_{a}^{s}  \ud t
+            = s - a.
+        \end{equation*}
+
+        Conversely, if \(\gamma\) is not a parameterization by arc-length,
+        then there is an \(s_0\) with \(\gamma'(s_0) \neq 1\).
+        Assume that \(a < s_0\),
+        for if in fact \(s_0 = a\), then by continuity of \(\gamma'\),
+        we can choose another \(s_1\) near \(s_0\) that also satisfies \(\gamma'(s_1) \neq 1\).
+        Since \(\gamma\) is continuous, there is a neighbourhood \([s_0 - \delta, s_0]\),
+        with \(s_0 - \delta > a\),
+        such that \(1 - \gamma(s)\) and \(1 - \gamma(s_0)\) have the same sign
+        for all \(s\) in this neighbourhood.
+        Therefore, \(\int_{s_0 - \delta}^{s_0} |\gamma'(t)| \ud t\)
+        is either greater than or less than \(\delta\),
+        depending on the sign of \(1 - \gamma(s_0)\).
+        Thus, either
+        \begin{equation*}
+            \int_{a}^{s_0 - \delta} |\gamma'(t)| \ud t \neq s_0 - \delta - a,
+            \qquad \text{or} \qquad
+            \int_{a}^{s_0} |\gamma'(t)| \ud t \neq s_0 - a,
+        \end{equation*}
+        as desired.
+
+    \item
+        Let \(\eta\) be any parameterization of \(\Gamma\).
+        Per the hint, let
+        \begin{equation*}
+            h(s) = \int_{a}^{s} |\eta'(t)| \ud t
+            \quad \quad \text{and} \quad \quad
+            \gamma = \eta \circ h^{-1}.
+        \end{equation*}
+        Since \(h\) is bijective, \(h^{-1}\) is well-defined and bijective,
+        hence \(\gamma\) is another parameterization of the curve \(\Gamma\).
+        By the chain rule and the fundamental theorem of calculus,
+        \begin{equation*}
+            \gamma' = \frac{\eta' \circ h^{-1}}{h' \circ h^{-1}}
+            = \frac{\eta' \circ h^{-1}}{|\eta'| \circ h^{-1}}
+            = \pm 1,
+        \end{equation*}
+        hence \(\gamma\) is a parameterization of \(\Gamma\) be arc-length.
+
+
+
+
+
+
+    \end{enumerate}
+
+\end{soln}
+\end{exrc}
