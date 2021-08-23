@@ -17,10 +17,10 @@
     \end{equation*}
     Therefore,
     \begin{align*}
-        2\pi 
+        2\pi
         &= \int_{-\pi}^{\pi} D_n(x) \ud x \\
         &= \int_{-\pi}^{\pi} \frac{\sin((N + 1 / 2)x)}{\sin(x / 2)} \ud x \\
-        &= \int_{-\pi}^{\pi} \sin\br{(N + 1/2)x} \sqbr{\frac{1}{\sin(x/2)} 
+        &= \int_{-\pi}^{\pi} \sin\br{(N + 1/2)x} \sqbr{\frac{1}{\sin(x/2)}
         - \frac{2}{x} + \frac{2}{x}} \ud x.
     \end{align*}
     Define
@@ -35,8 +35,10 @@
         = \lim_{x \to 0} \frac{x - 2\sin(x / 2)}{x \sin(x / 2)}
         = 0,
     \end{equation*}
-    where the last equality follows by using L'Hopital's rule twice.
-    Therefore, \(g(x)\) is Riemann integrable, and so, by the Riemann-Lebesgue Lemma,
+    where the last equality follows by applying L'Hopital's rule twice.
+    Therefore, since \(g(x)\) is continuous on a compact interval,
+    it is bounded, hence Riemann integrable.
+    So by the Riemann-Lebesgue Lemma,
     \begin{equation*}
         \lim_{N \to \infty} \int_{-\pi}^{\pi} g(x) \sin((N + 1 / 2)x) \ud x = 0.
     \end{equation*}
@@ -48,7 +50,7 @@
     \begin{equation*}
         \lim_{N \to \infty} \int_{0}^{\pi} \frac{\sin((N + 1/2)x)}{x} \ud x = \frac{\pi}{2}.
     \end{equation*}
-    Finally, the change of variables \(u = (N + 1/2)x\) and taking the limit yields
+    Finally, a change of variables \(u = (N + 1/2)x\) followed by taking the limit yields
     \begin{equation*}
         \int_{0}^{\infty} \frac{\sin u}{u} \ud u = \frac{\pi}{2},
     \end{equation*}
