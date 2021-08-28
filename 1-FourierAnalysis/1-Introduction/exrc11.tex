@@ -1,0 +1,55 @@
+%%% Exercise 1.1.11
+\begin{exrc}[11]
+    Show that if \(n \in \Z\),
+    the only solutions of the differential equation
+    \begin{equation*}
+        r^2 F''(r) + r F'(r) - n^2 F(r) = 0,
+    \end{equation*}
+    which are twice differentiable when \(r > 0\),
+    are given by the linear combinations \(r^n\) and \(r^{-n}\) when \(n \neq 0\),
+    and 1 and \(\log r\) when \(n = 0\).
+
+\begin{soln}
+    We take care of the case \(n = 0\) first.
+    In this case, we have the differential equation
+    \begin{equation*}
+        rF'' + F' = 0.
+    \end{equation*}
+    Integrating both sides yields
+    \begin{equation*}
+        F'(r) = c_1 / r,
+    \end{equation*}
+    where \(c_1\) is a constant.
+    Integrating again yields
+    \begin{equation*}
+        F(r) = c_1 \log r + c_2,
+    \end{equation*}
+    as desired.
+
+    Now assume \(n \neq 0\).
+    Let \(F(r) = g(r) r^n\).  Then
+    \begin{equation*}
+        F' = g' r^n + n g' r^{n - 1}, \quad \quad
+        F'' = g'' r^n + 2n g' r^{n - 1} + n(n - 1)g r^{n - 2}.
+    \end{equation*}
+    Plugging these into the original differential equation and simplifying yields
+    \begin{equation*}
+        r g'' + (2n + 1) g' r = 0.
+    \end{equation*}
+    Integrating both sides gives
+    \begin{equation*}
+        rg' + 2n g = c,
+    \end{equation*}
+    where \(c\) is a constant.
+    Since \(n \neq 0\), the solution to this differential equation is
+    \begin{equation*}
+        g(r) = c_1 r^{-2n} + c_2,
+    \end{equation*}
+    where \(c_1\) and \(c_2\) are constant in \(r\).
+    Hence
+    \begin{equation*}
+        F(r) = c_1 r^{-n} + c_2 r^n.
+    \end{equation*}
+
+\end{soln}
+\end{exrc}
