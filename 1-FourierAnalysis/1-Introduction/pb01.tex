@@ -1,0 +1,95 @@
+%%% Problem 1.1.1
+\begin{pb}[1]
+    Find a solution for the steady-state heat equation \(\triangle u = 0\) in the recatangle
+    \(R = \set{(x, y): 0 \leq x \leq \pi, 0 \leq y \leq 1}\) that vanishes
+    on the vertical sides of \(R\),
+    and so that
+    \begin{equation*}
+        u(x, 0) = f_0(x) \quad \quad \text{and} \quad \quad u(x, 1) = f_1(x),
+    \end{equation*}
+    where \(f_0\) and \(f_1\) are initial data which fix the temperature distribution on the horizontal
+    sides of the rectangle.
+
+    Use separation of variables to show that if \(f_0\) and \(f_1\) have Fourier expansions
+    \begin{equation*}
+        f_0(x) = \sum_{k = 1}^{\infty} A_k \sin kx \quad \quad \text{and}
+        f_1(x) = \sum_{k = 1}^{\infty} B_k \sin kx,
+    \end{equation*}
+    then
+    \begin{equation*}
+        u(x, y)
+        = \sum_{k = 1}^{\infty} \lrb{\frac{\sinh(k(1 - y))}{\sinh k} A_k + \frac{\sinh ky}{\sinh k}B_k} \sin kx.
+    \end{equation*}
+
+\begin{soln}
+    Using the technique of separation of variables, assume that \(u(x, y) = X(x) Y(y)\).
+    Then \(\triangle u = 0\) is equivalent to saying that
+    \begin{equation*}
+        X'' Y + X Y'' = 0
+        \quad \quad \text{or} \quad \quad
+        -\frac{X''}{X} = \frac{Y''}{Y} = C,
+    \end{equation*}
+    where \(C\) is a constant.
+    Since \(X\) is periodic, the constant \(C\) is nonnegative,
+    so we can assume \(C = \lambda^2\), where \(\lambda\) is real.
+
+    The differential equation
+    \begin{equation*}
+        X'' + \lambda^2 X = 0.
+    \end{equation*}
+    has, by exercise 6, the solution
+    \begin{equation*}
+        X(x) = a \cos \lambda x + b \sin \lambda x.
+    \end{equation*}
+    The initial condition \(X(0) = 0\) and \(X(\pi) = 0\)
+    implies \(a = 0\) and \(\lambda \in \Z\) respectively,
+    hence
+    \begin{equation*}
+        X(x) = b \sin \lambda x \quad \quad \lambda \in \Z.
+    \end{equation*}
+    Also, the differential equation
+    \begin{equation*}
+        Y'' - \lambda^2 Y = 0
+    \end{equation*}
+    has solution
+    \begin{equation*}
+        Y(y) = c_1 e^{\lambda y} + c_2 e^{-\lambda y},
+    \end{equation*}
+    where \(c_1\) and \(c_2\) are constants.
+
+
+    By our assumption that \(u = XY\) and our results on \(X\) and \(Y\),
+    we obtain for fixed \(k \in \Z\) that
+    \begin{equation*}
+        u(x, y) = \lrb{C_1 e^{k y} + C_2 e^{-k y}} \sin k x,
+    \end{equation*}
+    where \(C_i = c_i b\).
+    Noting that the Laplacian is linear, we can superpose the above solutions into one general solution
+    \begin{equation*}
+        u(x, y) = \sum_{k = 1}^{\infty} \lrb{a_k e^{k y} + b_k e^{-k y}} \sin kx,
+    \end{equation*}
+    where \(a_k\) and \(b_k\) are constant in \(x\) and \(y\).
+    We use the fact that \(\sin x\) is an odd function to simplify the two-sided infinite
+    sum into a on-sided infinite sum
+
+    Now we find the values of \(C_1 \) and \(C_2\).
+    Using the initial conditions \(u(x, 0) = f_0\) and \(u(x, 1) = f_1\) yields
+    \begin{equation*}
+        a_k + b_k = A_k, \quad \quad a_k e^{k} + b_k e^{-k} = B_k.
+    \end{equation*}
+    Solving for \(a_k\) and \(b_k\) gives
+    \begin{equation*}
+        a_k = \frac{B_k - A_k e^{-k}}{2 \sinh k}, \quad \quad
+        b_k = \frac{A_k e^{k} - B_k}{2 \sinh k}.
+    \end{equation*}
+    Therefore,
+    \begin{align*}
+        u(x, y)
+        &= \sum_{k = 1}^{\infty} \lrb{\frac{B_k - A_k e^{-k}}{2 \sinh k} e^{ky} + \frac{A_k e^{k} - B_k}{2 \sinh k} e^{-ky}} \sin kx \\
+        &= \sum_{k = 1}^{\infty} \lrb{\frac{\sinh(k(1 - y))}{\sinh k} A_k + \frac{\sinh ky}{\sinh k}B_k} \sin kx,
+    \end{align*}
+    as desired.
+
+
+\end{soln}
+\end{pb}
