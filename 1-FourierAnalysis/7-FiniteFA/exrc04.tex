@@ -1,0 +1,34 @@
+%%% Exercise 1.7.4
+\begin{exrc}[4]
+    Let \(e\) be a character on \(G = \Z(N)\).
+    Show the there exists a unique integer \(0 \leq l \leq N - 1\) so that
+    \begin{equation*}
+        e(k) = e_l(k) = e^{2 \pi i l k / N} \quad \text{for all \(k \in \Z(N)\)}.
+    \end{equation*}
+    Conversely, every function of this type is a character on \(\Z(N)\).
+    Deduce that \(e_l \mapsto l\) defines an isomorphism from \(\hat{G}\) to \(G\).
+
+\begin{soln}
+    Since \((N + 1) \cdot 1 = 1\) and by definition of a character, we see
+    \begin{equation*}
+        e(1) = e((N + 1) \cdot 1) = e(1)^{N + 1},
+    \end{equation*}
+    where \((N + 1) \cdot 1\) is \(1\) added \(N + 1\) times.
+    Therefore, \(e(1)^N = 1\), i.e., \(e(1)\) is an \(N\)'th root of unity,
+    so \(e(1) = e^{2 \pi i l / N}\) for some \(0 \leq l < N\).
+    Since \(k = k \cdot 1\), we see
+    \begin{equation*}
+        e(k) = e(1)^k = e^{2\pi i l k / N},
+    \end{equation*}
+    as desired.
+    Also every function \(e_l(k) = e^{-2 \pi i l k / N}\)
+    is a character on \(\Z(N)\);
+    it is well defined since \(e_l(k) = e_l(k + N)\),
+    and it respects the group operation since \(e_l(k_1 + k_2) = e_l(k_1)e^l(k_2)\).
+
+    The map \(e_l \mapsto l\) is a homomorphism from \(\hat{G}\) to \(G\)
+    since \(e_{l_1} e_{l_2} = e_{l_1 + l_2}\).
+    This map is clearly bijective, therefore \(\hat{G}\) and \(G\) are isomorphic.
+
+\end{soln}
+\end{exrc}
