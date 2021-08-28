@@ -1,0 +1,40 @@
+%%% Exercise 1.7.6
+\begin{exrc}[6]
+    Prove that all characters on \(\R\) take the form
+    \begin{equation*}
+        e_{\zeta}(x) = e^{2\pi i \zeta x} \quad \text{with \(\zeta \in \R\)},
+    \end{equation*}
+    and that \(e_{\zeta} \mapsto \zeta\) defines a homomorphism from \(\hat{\R}\) to \(\R\).
+
+
+\begin{soln}
+    Suppose \(F\) is continuous, nonzero, and \(F(x + y) = F(x)F(y)\).
+    Then, there exists a \(\delta > 0\) with
+    \begin{equation*}
+        c = \int_{0}^{\delta} F(y) \ud y \neq 0.
+    \end{equation*}
+    So,
+    \begin{equation*}
+        c F(x) = F(x) \int_{0}^{\delta} F(y) \ud y
+        = \int_{0}^{\delta} F(x + y) \ud y
+        = \int_{x}^{x + \delta} F(y) \ud y.
+    \end{equation*}
+    Differentiating both sides shows
+    \begin{equation*}
+        F'(x) = \frac{F(x + \delta) - F(x)}{c} = \frac{F(\delta) - 1}{c} F(x)
+        = A F(x).
+    \end{equation*}
+    Solving this differential equation shows \(F(x) = c_1 e^{Ax}\).
+    If \(F\) maps to the unit circle, then \(c_1 = 1\).
+
+    Let \(e\) be a character on \(\R\), and suppose that \(e(1) = e^{2 \pi i \zeta}\).
+    Then the above paragraph implies that \(e(x) = e_\zeta(x) = e^{2 \pi i \zeta x}\).
+    By the properties of the exponential, it is clear that all
+    functions of this type are characters on \(\R\).
+    Furthermore, since \(e_{\zeta_1 + \zeta_2} = e_{\zeta_1} e_{\zeta_2}\),
+    it is clear that the map \(\zeta \mapsto e_{\zeta}\) is a bijective homomorphism,
+    hence \(\hat{R}\) and \(\R\) are bijective.
+
+
+\end{soln}
+\end{exrc}
