@@ -1,0 +1,32 @@
+%%% Exercise 1.7.12
+\begin{exrc}[12]
+    Suppose that \(G\) is a finite abelian group and \(e: G \to \C\)
+    is a function that satisfies \(e(x \cdot y) = e(x) e(y)\) for all \(x, y \in \C\).
+    Prove that either \(e\) is identically \(0\) or \(e\) never vanishes.
+    In the second case, show that for each \(x\), \(e(x) = e^{2 \pi i r}\),
+    for some \(r \in \Q\) of the form \(r = p / q\), where \(q = |G|\).
+
+\begin{soln}
+    Suppose \(e(x) = 0\) for some \(x\).
+    Then
+    \begin{equation*}
+        e(1) = e(x \cdot x^{-1}) = e(x) e(x^{-1}) = 0.
+    \end{equation*}
+    Therefore, for all \(y \in G\),
+    \begin{equation*}
+        e(y) = e(y \cdot 1) = e(y) e(1) = 0,
+    \end{equation*}
+    hence \(e\) vanishes everywhere.
+
+    Now assume that \(e\) vanishes nowhere.
+    As in the proof of Lemma 2.2, we can conclude that \(e\) is a mapping to the unit circle.
+    Since \(x^{|G|} = 1\) for all \(x \in G\),
+    we can conclude that \(e(x)\) is a \(|G|\)'th root of unity since
+    \begin{equation*}
+        e(1) = e(x^{|G|}) = e(x)^{|G|}.
+    \end{equation*}
+    Therefore, \(e(x) = e^{2 \pi i p / |G|}\), where \(0 \leq p < |G|\) is an integer.
+
+
+\end{soln}
+\end{exrc}
