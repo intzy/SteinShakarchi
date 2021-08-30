@@ -1,0 +1,100 @@
+%%% Exercise 1.7.13
+\begin{exrc}[13]
+    In analogy with ordinary Fourier series,
+    one may interpret finite Fourier expansions using convolutions as follows.
+    Suppose \(G\) is a finite abelian group,
+    \(1_G\) its unit,
+    and \(V\) the vector space of complex-valued functions on \(G\).
+    \begin{enumerate}[(a)]
+    \item
+        The convolution of two functions \(f\) and \(g\) in \(V\) is defined for each \(a \in G\) by
+        \begin{equation*}
+            (f * g)(a) = \frac{1}{|G|} \sum_{b \in G}^{} f(b) g(a \cdot b^{-1}).
+        \end{equation*}
+        Show that for all \(e \in \hat{G}\) one has \(\hat{(f * g)}(e) = \hat{f}(e) \hat{g}(e)\).
+
+    \item
+        Use Theorem 2.5 to show that if \(e\) is a character on \(G\), then
+        \begin{equation*}
+            \sum_{e \in \hat{G}}^{} e(c) = 0 \quad
+            \text{whenever \(c \in G\) and \(c \neq 1_G\).}
+        \end{equation*}
+
+    \item
+        As a result of (b),
+        show that the Fourier series \(Sf(a) = \sum_{e \in \hat{G}}^{} \hat{f}(e) e(a)\)
+        of a function \(f \in V\) takes the form
+        \begin{equation*}
+            S f = f * D,
+        \end{equation*}
+        where \(D\) is defined by
+        \begin{equation*}
+            D(c) = \sum_{e \in \hat{G}}^{} e(c)
+            =
+            \begin{cases}
+                |G| \quad &\text{if \(c = 1_G\)},\\
+                0 \quad &\text{otherwise}.
+            \end{cases}
+        \end{equation*}
+        Since \(f * D = f\), we recover the fact that \(Sf = f\).
+    \end{enumerate}
+
+\begin{soln}
+        As a lemma,
+        we first show that \(\bar{e(b)} = e(b^{-1})\).
+        Since \(z \bar{z} = |z|^2\) for all complex numbers \(z\),
+        by the properties of characters,
+        this implies \(\bar{e(b)}e(b) = 1\).
+        Multiplying both sides by \(e(b^{-1})\) gives the desired result.
+
+    \begin{enumerate}[(a)]
+    \item
+        As \(G\) is abelian, it follows by our lemma and the definitions of the convolution
+        and \(\hat{f}\) since
+        \begin{align*}
+            \hat{f}(e) \hat{g}(e)
+            &= \frac{1}{|G|^2} \sum_{b \in G}^{} f(b) \bar{e(b)} \sum_{a \in G}^{} g(a) \bar{e(a)} \\
+            &= \frac{1}{|G|^2} \sum_{a \in G}^{} \sum_{b \in G}^{} f(b) g(a) \bar{e(ab)} \\
+            &= \frac{1}{|G|^2} \sum_{a \in G}^{} \sum_{b \in G}^{} f(b) g(a b^{-1}) \bar{e(a)} \\
+            &= \frac{1}{|G|} \sum_{a \in G}^{} (f * g)(a) \bar{e(a)} \\
+            &= \hat{(f * g)}(e).
+        \end{align*}
+
+
+    \item
+        Recall that \(e(1_G) = 1\) for all characters \(G\).
+        Choose \(c \in G\) distinct from \(1_G\).
+        Then there exists some character \(e_0\) such that \(e_0(c) \neq 1\).
+        For if no such \(e_0\) existed,
+        then \(\hat{G}\) could not be a basis for \(V\),
+        contradicting Theorem 2.5.
+        Therefore, as in the proof of Lemma 2.4, since \(e_0(c) \neq 1\) and since
+        \begin{equation*}
+            e_0(c) \sum_{e \in \hat{G}}^{} e(c)
+            = \sum_{e \in \hat{G}}^{} (e_0 e)(c)
+            = \sum_{e \in \hat{G}}^{} e(c),
+        \end{equation*}
+        we must have \(\sum_{e \in \hat{G}}^{} e(c) = 0\).
+
+    \item
+        By using our above lemma,
+        we see that \(Sf = f * D\) since for all \(a \in G\), we have
+        \begin{align*}
+            Sf(a)
+            &= \sum_{e \in \hat{G}}^{} \hat{f}(e) e(a) \\
+            &= \frac{1}{|G|} \sum_{e \in \hat{G}}^{} \sum_{b \in G}^{} f(b) \bar{e(b)} e(a) \\
+            &= \frac{1}{|G|} \sum_{b \in G}^{} f(b) \sum_{e \in \hat{G}}^{} e(a) \bar{e(b)} \\
+            &= \frac{1}{|G|} \sum_{b \in G}^{} f(b) \sum_{e \in \hat{G}}^{} e(a b^{-1}) \\
+            &= \frac{1}{|G|} \sum_{b \in G}^{} f(b) D(a b^{-1}) \\
+            &= \frac{1}{|G|} (f * D)(a).
+        \end{align*}
+        Since
+        \begin{equation*}
+            (f * D)(a) = \frac{1}{|G|} \sum_{b \in G}^{} f(b) D(a b^{-1})
+            = \frac{1}{|G|} f(a) D(1_G) = f(a),
+        \end{equation*}
+        we deduce that \(Sf = f\).
+    \end{enumerate}
+
+\end{soln}
+\end{exrc}
