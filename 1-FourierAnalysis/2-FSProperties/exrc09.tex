@@ -1,0 +1,82 @@
+%%% Exercise 1.2.9
+\begin{exrc}[9]
+    Let \(f(x) = \chi_{[a, b]}(x)\) be the characteristic function of the interval
+    \([a, b] \subset [-\pi, \pi]\).
+    \begin{enumerate}[(a)]
+    \item
+        Show that the Fourier series of \(f\) is given by
+        \begin{equation*}
+            f(x) \sim \frac{b - a}{2\pi} + \sum_{n \neq 0}^{} \frac{e^{-ina} - e^{-inb}}{2 \pi i n}e^{e^{inx}}.
+        \end{equation*}
+
+    \item
+        Show that if \(a \neq -\pi\) and \(b \neq \pi\), and \(a \neq b\),
+        then the Fourier series does not converge absolutely for any \(x\).
+
+    \item
+        However, prove that the Fourier series converges at every point \(x\).
+        What happens if \(a = -\pi\) and \(b = \pi\)?
+    \end{enumerate}
+
+\begin{soln}
+    \begin{enumerate}[(a)]
+    \item
+        Clearly
+        \begin{equation*}
+            \hat{f}(0) = \frac{1}{2\pi} \int_{a}^{b}  \ud x = \frac{b - a}{2\pi}
+        \end{equation*}
+        and
+        \begin{equation*}
+            \hat{f}(n) = \frac{1}{2\pi} \int_{a}^{b} e^{-inx} \ud x
+            = \frac{e^{-ina} - e^{-inb}}{2 \pi i n}.
+        \end{equation*}
+        for \(n \neq 0\).
+
+    \item
+        Let \(\vartheta = \frac{b + a}{2}\),
+        Since \(\abs{e^{in \vartheta}} = 1\) and
+        \begin{equation*}
+            \frac{e^{-ina} - e^{-inb}}{2i} e^{in \vartheta} = \sin n \theta_0,
+        \end{equation*}
+        it suffices to show that
+        \begin{equation*}
+            \sum_{n \neq 0}^{} \frac{\sin n\theta_0}{n}
+        \end{equation*}
+        does not converge absolutely.
+        For that, since \(\sum_{}^{} 1 / n\) does not converge absolutely,
+        it suffices to show that \(\limsup_{n \to \infty} |\sin n\theta_0| > 0\).
+
+        First suppose that \(b - a\) is rational, i.e.,
+        \(\theta_0 = \frac{p}{q} \pi\).
+        By assumption on \(a\) and \(b\), we see that \(0 < p / q < 1\), i.e., \(\sin \theta_0 \neq 0\).
+        Therefore, if \(n = 2kq + 1\) for any integer \(k\),
+        since \(\sin x\) is \(2\pi\)-periodic,
+        we get
+        \begin{equation*}
+            \sin n \theta_0 = \sin \theta_0 \neq 0.
+        \end{equation*}
+        Thus \(\limsup_{n \to \infty} |\sin n\theta_0| \geq |\sin \theta_0| > 0\)
+        when \(\theta_0\) is a rational multiple of \(\pi\).
+
+        If on the other hand \(b - a\) is irrational,
+        then we can use the following fact;
+        if \(\alpha\) is irrational,
+        then \(\angl{n \alpha}\) is equidistributed, hence dense, in \([0, 1]\),
+        where \(\angl{x}\) denotes the fractional part of \(x\).
+        (This is proven in Chapter 4.)
+        The above result when scaled by \(2\pi\)
+        implies that \(2 \pi n \alpha \pmod {2\pi}\) is dense on the circle.
+        Therefore, you can always find an \(n\) as large as you want such that
+        \(n \theta_0 \pmod{2\pi}\) is sufficiently close to \(\pi / 2\).
+        This proves that \(\limsup_{n \to \infty} |\sin n\theta_0| = 1 > 0\).
+
+    \item
+        However, the series converges for all \(x\) by Dirichlet's test for convergence
+        (Exercise 7) with \(a_n = 1 / n\) and \(b_n = (e^{-ina} - e^{-inb}) e^{inx}\)
+        so \(|b_n| \leq 2\).
+        If \(a = -\pi\) and \(b = \pi\),
+        then each term in the summation is zero, hence the Fourier series \(f(x) \sim 1\).
+    \end{enumerate}
+
+\end{soln}
+\end{exrc}
